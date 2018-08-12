@@ -3,15 +3,13 @@
 #include <algorithm>
 #include "Actor.hpp"
 #include "SpriteComponent.hpp"
+#include "Grid.hpp"
+#include "Enemy.hpp"
+#include "AIComponent.hpp"
+#include "AIState.hpp"
+#include<iostream>
 
-Game::Game()
-	:mWindow(nullptr)
-	, mRenderer(nullptr)
-	, mIsRunning(true)
-	, mUpdatingActors(false)
-{
-
-}
+Game::Game():mWindow(nullptr), mRenderer(nullptr), mIsRunning(true), mUpdatingActors(false) { }
 
 bool Game::Initialize()
 {
@@ -77,6 +75,19 @@ void Game::ProcessInput()
 		mIsRunning = false;
 	}
 
+	if (keyState[SDL_SCANCODE_B])
+	{
+		mGrid->BuildTower();
+	}
+
+	//process mouse
+	int x, y;
+	Uint32 buttons = SDL_GetMouseState(&x, &y);
+	if (SDL_BUTTON(buttons) & SDL_BUTTON_LEFT)
+	{
+		mGrid->ProcessClick(x, y);
+	}
+
 	mUpdatingActors = true;
 	for (auto actor : mActors)
 	{
@@ -126,7 +137,7 @@ void Game::UpdateGame()
 
 void Game::GenerateOutput()
 {
-	SDL_SetRenderDrawColor(mRenderer, 34, 139, 34, 255);
+	SDL_SetRenderDrawColor(mRenderer, 53, 53, 53, 255);
 	SDL_RenderClear(mRenderer);
 
 	for (auto sprite : mSprites)
@@ -139,7 +150,7 @@ void Game::GenerateOutput()
 
 void Game::LoadData()
 {
-
+	mGrid = new Grid(this);
 }
 
 void Game::UnloadData()
@@ -245,4 +256,26 @@ void Game::RemoveSprite(SpriteComponent* sprite)
 {
 	auto iter = std::find(mSprites.begin(), mSprites.end(), sprite);
 	mSprites.erase(iter);
+}
+
+Enemy* Game::GetNearestEnemy(const Vector2& pos)
+{
+	Enemy* best = nullptr;
+
+	if (mEnemies.size() > 0)
+	{
+		best = mEnemies[0];
+		float bestDistSq = (pos - mEnemies[0]->GetPosition()).LengthSq();
+		for (size_t i = 1; i < mEnemies.size(); ++i)
+		{
+			float newDistSq = (pos - mEnemies[i]->GetPosition()).LengthSq();
+			if (newDistSq < bestDistSq)
+			{
+				bestDistSq = newDistSq;
+				best = mEnemies[i];
+			}
+		}
+	}
+
+	return best;
 }

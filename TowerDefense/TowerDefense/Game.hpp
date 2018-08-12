@@ -21,6 +21,10 @@ public:
 
 	SDL_Texture* GetTexture(const std::string& fileName);
 
+	class Grid* GetGrid() { return mGrid; }
+	std::vector<class Enemy*>& GetEnemies() { return mEnemies; }
+	class Enemy* GetNearestEnemy(const Vector2& pos);
+
 private:
 	void ProcessInput();
 	void UpdateGame();
@@ -40,4 +44,8 @@ private:
 	Uint32 mTicksCount;
 	bool mIsRunning;
 	bool mUpdatingActors;
+
+	std::vector<class Enemy*> mEnemies;
+	class Grid* mGrid;
+	float mNextEnemy;
 };

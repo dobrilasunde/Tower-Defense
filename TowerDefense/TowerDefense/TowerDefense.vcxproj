@@ -145,25 +145,36 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AIComponent.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CircleComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="MoveComponent.cpp" />
+    <ClCompile Include="NavComponent.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.hpp" />
     <ClInclude Include="AIComponent.hpp" />
     <ClInclude Include="AIState.hpp" />
+    <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="CircleComponent.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Grid.hpp" />
     <ClInclude Include="Math.hpp" />
+    <ClInclude Include="MoveComponent.hpp" />
+    <ClInclude Include="NavComponent.hpp" />
     <ClInclude Include="SpriteComponent.hpp" />
     <ClInclude Include="Tile.hpp" />
+    <ClInclude Include="Tower.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

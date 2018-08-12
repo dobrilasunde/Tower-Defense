@@ -10,6 +10,12 @@
     <ClCompile Include="CircleComponent.cpp" />
     <ClCompile Include="AIComponent.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="MoveComponent.cpp" />
+    <ClCompile Include="NavComponent.cpp" />
+    <ClCompile Include="Tower.cpp" />
+    <ClCompile Include="Bullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.hpp" />
@@ -22,5 +28,10 @@
     <ClInclude Include="AIState.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="Tile.hpp" />
+    <ClInclude Include="Grid.hpp" />
+    <ClInclude Include="MoveComponent.hpp" />
+    <ClInclude Include="NavComponent.hpp" />
+    <ClInclude Include="Tower.hpp" />
+    <ClInclude Include="Bullet.hpp" />
   </ItemGroup>
 </Project>

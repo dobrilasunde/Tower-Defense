@@ -5,6 +5,8 @@
 class Tile : public Actor
 {
 public:
+	friend class Grid;
+
 	enum TileState
 	{
 		EDefault,
