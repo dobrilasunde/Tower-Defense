@@ -16,6 +16,7 @@
     <ClCompile Include="NavComponent.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="AIState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.hpp" />

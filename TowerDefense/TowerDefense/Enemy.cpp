@@ -6,6 +6,8 @@
 #include "Tile.hpp"
 #include "NavComponent.hpp"
 #include<algorithm>
+#include "AIComponent.hpp"
+#include "AIState.hpp"
 
 Enemy::Enemy(class Game* game) : Actor(game)
 {
@@ -19,6 +21,12 @@ Enemy::Enemy(class Game* game) : Actor(game)
 	NavComponent* nc = new NavComponent(this);
 	nc->SetForwardSpeed(150.0f);
 	nc->StartPath(GetGame()->GetGrid()->GetStartTile());
+
+	mAI = new AIComponent(this);
+	mAI->RegisterState(new AIFly(mAI));
+	mAI->RegisterState(new AIDeath(mAI));
+
+	mAI->ChangeState("Fly");
 
 	mCircle = new CircleComponent(this);
 	mCircle->SetRadius(25.0f);
@@ -37,6 +45,7 @@ void Enemy::UpdateActor(float deltaTime)
 	Vector2 diff = GetPosition() - GetGame()->GetGrid()->GetEndTile()->GetPosition();
 	if (Math::NearZero(diff.Length(), 10.0f))
 	{
+		mAI->ChangeState("Death");
 		SetState(EDead);
 	}
 }

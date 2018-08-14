@@ -4,6 +4,8 @@
 #include "Game.hpp"
 #include "Enemy.hpp"
 #include "Bullet.hpp"
+#include "AIComponent.hpp"
+#include "AIState.hpp"
 
 Tower::Tower(class Game* game) : Actor(game)
 {
@@ -14,6 +16,12 @@ Tower::Tower(class Game* game) : Actor(game)
 	//mMove->SetAngularSpeed(Math::Pi);
 
 	mNextAttack = AttackTime;
+
+	mAI = new AIComponent(this);
+	mAI->RegisterState(new AIIdle(mAI));
+	mAI->RegisterState(new AIAttack(mAI));
+
+	mAI->ChangeState("Idle");
 }
 
 void Tower::UpdateActor(float deltaTime)
@@ -23,6 +31,7 @@ void Tower::UpdateActor(float deltaTime)
 	mNextAttack -= deltaTime;
 	if (mNextAttack <= 0)
 	{
+		mAI->ChangeState("Attack");
 		Enemy* e = GetGame()->GetNearestEnemy(GetPosition());
 
 		if (e != nullptr)
@@ -39,5 +48,6 @@ void Tower::UpdateActor(float deltaTime)
 			}
 		}
 		mNextAttack = AttackTime;
+		mAI->ChangeState("Idle");
 	}
 }

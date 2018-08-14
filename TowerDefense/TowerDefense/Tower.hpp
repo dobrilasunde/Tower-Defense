@@ -9,6 +9,7 @@ public:
 
 private:
 	class MoveComponent* mMove;
+	class AIComponent* mAI;
 	float mNextAttack;
 	const float AttackTime = 2.5f;
 	const float AttackRange = 100.0f;

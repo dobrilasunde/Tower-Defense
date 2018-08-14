@@ -10,4 +10,5 @@ public:
 	class CircleComponent* GetCircle() { return mCircle; }
 private:
 	class CircleComponent* mCircle;
+	class AIComponent* mAI;
 };

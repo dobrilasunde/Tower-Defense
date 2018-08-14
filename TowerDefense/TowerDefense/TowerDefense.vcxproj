@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AIComponent.cpp" />
+    <ClCompile Include="AIState.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CircleComponent.cpp" />
     <ClCompile Include="Component.cpp" />
