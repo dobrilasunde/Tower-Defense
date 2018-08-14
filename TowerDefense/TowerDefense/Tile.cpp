@@ -26,10 +26,10 @@ void Tile::UpdateTexture()
 	switch (mTileState)
 	{
 		case EStart:
-			text = "Assets/TileTan.png";
+			text = "Assets/TileBrown.png";
 			break;
 		case EBase:
-			text = "Assets/TileGrey.png";
+			text = "Assets/TileBrown.png";
 			break;
 		case EPath:
 			if (mSelected)

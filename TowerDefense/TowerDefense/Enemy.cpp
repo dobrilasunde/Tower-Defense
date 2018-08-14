@@ -14,7 +14,7 @@ Enemy::Enemy(class Game* game) : Actor(game)
 	game->GetEnemies().emplace_back(this);
 
 	SpriteComponent* sc = new SpriteComponent(this);
-	sc->SetTexture(game->GetTexture("Assets/Airplane.png"));
+	sc->SetTexture(game->GetTexture("Assets/Enemy.png"));
 
 	SetPosition(GetGame()->GetGrid()->GetStartTile()->GetPosition());
 
